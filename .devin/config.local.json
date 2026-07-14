@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Exec(git fetch)",
+      "Exec(git)",
+      "Exec(Select-Object)",
+      "Exec(Get-Location)",
+      "Exec(Get-ChildItem)",
+      "Exec(if)"
+    ]
+  }
+}

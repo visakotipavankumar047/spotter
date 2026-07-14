@@ -1,0 +1,26 @@
+services:
+  backend:
+    build: ./backend
+    expose:
+      - "8000"
+    volumes:
+      - backend_data:/app/data
+    environment:
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY:-dev-secret-key-change-in-production}
+      - ALLOWED_HOSTS=backend,localhost,127.0.0.1
+      - DATABASE_PATH=/app/data/db.sqlite3
+    command: >
+      sh -c "python manage.py migrate --noinput &&
+             gunicorn --bind 0.0.0.0:8000 config.wsgi:application"
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - BACKEND_INTERNAL_URL=http://backend:8000
+    depends_on:
+      - backend
+
+volumes:
+  backend_data:

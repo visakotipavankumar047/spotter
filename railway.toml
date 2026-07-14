@@ -1,0 +1,20 @@
+# Exported as Railway/Fly/Render single-service deploy
+# Builds one image that exposes only port 3000 (Next.js).
+# Django listens on 127.0.0.1:8000 inside the container; Next rewrites /api/* to it.
+
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+startCommand = "/app/start.sh"
+healthcheckPath = "/"
+healthcheckTimeout = 300
+restartPolicyType = "ON_FAILURE"
+
+[variables]
+BACKEND_INTERNAL_URL = "http://127.0.0.1:8000"
+DJANGO_DEBUG = "False"
+DATABASE_PATH = "/app/data/db.sqlite3"
+ALLOWED_HOSTS = "*"
+PORT = "3000"

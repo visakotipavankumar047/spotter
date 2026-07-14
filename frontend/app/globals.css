@@ -1,0 +1,170 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-plex-mono);
+  --font-heading: var(--font-space-grotesk);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-positive: var(--positive);
+  --color-danger: var(--danger);
+  --color-paper: var(--paper);
+  --color-paper-ink: var(--paper-ink);
+  --color-surface: var(--surface);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #111111;
+  --card: #f5f5f5;
+  --card-foreground: #111111;
+  --surface: #f5f5f5;
+  --popover: #ffffff;
+  --popover-foreground: #111111;
+  --primary: #e54d2d;
+  --primary-foreground: #ffffff;
+  --secondary: #f0f0f0;
+  --secondary-foreground: #111111;
+  --muted: #f5f5f5;
+  --muted-foreground: #6b6b6b;
+  --accent: #e54d2d;
+  --accent-foreground: #ffffff;
+  --destructive: #e54d2d;
+  --border: #e5e5e5;
+  --input: #f0f0f0;
+  --ring: #e54d2d;
+  --positive: #1a7f5a;
+  --danger: #e54d2d;
+  --paper: #f7f7f7;
+  --paper-ink: #111111;
+
+  --chart-1: #e54d2d;
+  --chart-2: #1a7f5a;
+  --chart-3: #333333;
+  --chart-4: #6b6b6b;
+  --chart-5: #a3a3a3;
+
+  --radius: 0.375rem;
+
+  --sidebar: #ffffff;
+  --sidebar-foreground: #111111;
+  --sidebar-primary: #e54d2d;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f5f5f5;
+  --sidebar-accent-foreground: #111111;
+  --sidebar-border: #e5e5e5;
+  --sidebar-ring: #e54d2d;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  html {
+    @apply font-sans;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+  }
+  .font-data {
+    font-family: var(--font-mono);
+  }
+  .section-label {
+    @apply text-[11px] font-semibold uppercase tracking-[0.08em] text-primary;
+  }
+}
+
+.paper-log {
+  background: var(--paper);
+  color: var(--paper-ink);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4d4d4;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a3a3a3;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  header,
+  aside,
+  .no-print {
+    display: none !important;
+  }
+  main {
+    overflow: visible !important;
+  }
+}

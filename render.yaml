@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: eld-trip-planner
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DJANGO_DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: "*"
+      - key: DATABASE_PATH
+        value: /app/data/db.sqlite3
+      - key: BACKEND_INTERNAL_URL
+        value: http://127.0.0.1:8000
+      - key: PORT
+        value: "3000"
+    disk:
+      name: eld-data
+      mountPath: /app/data
+      sizeGB: 1

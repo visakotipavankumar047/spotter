@@ -1,0 +1,17 @@
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - app_data:/app/data
+    environment:
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY:-dev-secret-key-change-in-production}
+      - DJANGO_DEBUG=False
+      - ALLOWED_HOSTS=*
+      - DATABASE_PATH=/app/data/db.sqlite3
+      - BACKEND_INTERNAL_URL=http://127.0.0.1:8000
+      - PORT=3000
+
+volumes:
+  app_data:
